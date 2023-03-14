@@ -1,5 +1,5 @@
 {
-    "Traditional":[
+    "Taditional":[
         [90,100],
         [80,89],
         [70,79],
@@ -21,14 +21,14 @@
         ["C"],
         ["D"],
         ["E"],
-        ["Z"]
+        ["F"]
     ],
     "SBG-Rating":[
+        [5],
         [4],
         [3],
         [2],
         [1],
-        [0],
         [0]
     ],
     "Proficiency-Level-With-Standard":[

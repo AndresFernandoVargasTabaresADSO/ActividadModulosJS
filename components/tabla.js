@@ -1,21 +1,20 @@
-import formulario from "./formulario.js";
-import resultados from "./resultados.js";
+import comparativa from "./comparativa.js";
 export default{
-    name: document.querySelector("#resultados"),
+    name: document.querySelector("#myForm"),
     data: [],
-    frag: document.createDocumentFragment(),
+    rest:[],
     Api: async function(){
         let peticion = await fetch("./config.json");
         let json = await peticion.json();
         this.data = json;
     },
     Traditional(p1){
-        this.data.Traditional.forEach((val,id)=>{
-            if(p1==val){
+        this.data.Taditional.forEach((val,id)=>{
+            if(p1==id){
+            // if(true){
                 console.log(val[0], val[1]);
             }
         })
-        
     },
     PointRange(p1){
         this.data["14-Point-Range"].forEach((val,id)=>{
@@ -46,16 +45,13 @@ export default{
         })
     },
     Solucion(){
-        let dato = formulario.data[0];
-        this.data.Traditional.forEach((valor, llave)=>{
-            if(dato.puntaje >= valor[0] && dato.puntaje <= valor[1]){
-                this.Traditional(llave);
-                this.PointRange(llave);
-                this.Letter(llave);
-                this.SBGRating(llave);
-                this.ProficiencyLevelWithStandard(llave);
-                resultados.CrearLista(llave);
-            }
+        this.name.addEventListener("submit", (e)=>{
+            this.rest.push(Object.fromEntries(new FormData(e.target)))
+            console.log(this.rest);
+            comparativa.export();
+            this.name.reset();
+            e.preventDefault();
+            
         })
     }
 }
